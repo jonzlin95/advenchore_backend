@@ -7,7 +7,9 @@ class FamilyList(generics.ListCreateAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
 
-
+    def pre_save(self, obj):
+        obj.child_set = []
+    
 class FamilyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
