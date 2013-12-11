@@ -18,12 +18,20 @@ class TaskList(generics.ListCreateAPIView):
     
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Task.objects.all()
-    serializer_class = FamilySerializer
+    serializer_class = TaskSerializer
     
 class ChildDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Child.objects.all()
-    serializer_class = FamilySerializer
+    serializer_class = ChildSerializer
 
 class ChildList(generics.ListCreateAPIView):
     queryset = Child.objects.all()
-    serializer_class = FamilySerializer
+    serializer_class = ChildSerializer
+
+class RewardList(generics.ListCreateAPIView):
+    queryset = Reward.objects.all()
+    serializer_class = RewardSerializer
+    
+class RewardDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Reward.objects.all()
+    serializer_class = RewardSerializer
