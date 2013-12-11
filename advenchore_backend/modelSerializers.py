@@ -12,12 +12,12 @@ class FamilySerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ('id','child','startDate','dueDate','pointValue','status','description','response','picture')
+        fields = ('id', 'name', 'child','startDate','dueDate','pointValue','status','description','response','picture', 'pictureURL')
 
 class RewardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reward
-        fields = ('id', 'child', 'cost', 'status', 'quantity')
+        fields = ('id', 'name', 'child', 'cost', 'status', 'quantity', 'rewardURL')
 
 class ChildSerializer(serializers.ModelSerializer):
     task_set = serializers.PrimaryKeyRelatedField(many=True)
@@ -25,4 +25,4 @@ class ChildSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Child
-        fields = ('id','family','points','task_set','reward_set','level','points','toNextLevel','type','type_flavor')
+        fields = ('id', 'name', 'family','points','task_set','reward_set','level','points','toNextLevel','type','type_flavor')

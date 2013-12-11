@@ -5,6 +5,7 @@ class Family(models.Model):
     name = models.CharField(max_length=70)
 
 class Task(models.Model):
+    name = models.CharField(max_length=150)
     child = models.ForeignKey('Child')
     startDate = models.DateTimeField()
     dueDate = models.DateTimeField()
@@ -17,7 +18,7 @@ class Task(models.Model):
     description = models.TextField()
     response = models.TextField()
     picture = models.BooleanField(default=False)
-
+    pictureURL = models.TextField()
     
     def toJson(self):
         return {
@@ -33,10 +34,12 @@ class Task(models.Model):
         }
 
 class Reward(models.Model):
+    name = models.CharField(max_length=150)
     child = models.ForeignKey('Child')
     cost = models.IntegerField()
     status = models.IntegerField()
     quantity = models.IntegerField()
+    rewardURL = models.TextField()
     
     def toJson(self):
         return {
