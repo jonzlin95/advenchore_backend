@@ -76,6 +76,6 @@ class TasksOfChild(APIView):
     List all tasks owned by Child
     """
     def get(self, request, pk, format=None):
-        task = Task.objects.all(child__exact=pk)
+        task = Task.objects.get(child__exact=pk)
         serializer = TaskSerializer(task, many=True)
         return Response(serializer.data)
