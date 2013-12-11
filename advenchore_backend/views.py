@@ -3,37 +3,66 @@ from advenchore_backend.modelSerializers import *
 from rest_framework import generics
 
 
-class FamilyList(generics.ListCreateAPIView):
+class FamilyList(generics.ListAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
 
-    def pre_save(self, obj):
-        obj.child_set = []
+class FamilyListPOST(generics.CreateAPIView):
+    queryset = Family.objects.all()
+    serializer_class = FamilySerializerPOST
     
-class FamilyDetail(generics.RetrieveUpdateDestroyAPIView):
+class FamilyDetail(generics.RetrieveDestroyAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
+
+class FamilyDetailPOST(generics.UpdateAPIView):
+    queryset = Family.objects.all()
+    serialzer_class = FamilySerializerPOST
     
-class TaskList(generics.ListCreateAPIView):
+class TaskList(generics.ListAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     
-class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+class TaskListPOST(generics.CreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializerPOST
+  
+class TaskDetail(generics.RetrieveDestroyAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+
+class TaskDetailPOST(generics.UpdateAPIView):
+    queryset =  Task.objects.all()
+    serializer_class = TaskSerializerPOST
     
-class ChildDetail(generics.RetrieveUpdateDestroyAPIView):
+class ChildDetail(generics.RetrieveDestroyAPIView):
+    queryset = Child.objects.all()
+    serializer_class = ChildSerializer
+    
+class ChildDetailPOST(generics.UpdateAPIView):
+    queryset = Child.objects.all()
+    serializer_class = ChildSerializerPOST
+
+class ChildList(generics.ListAPIView):
     queryset = Child.objects.all()
     serializer_class = ChildSerializer
 
-class ChildList(generics.ListCreateAPIView):
+class ChildListPOST(generics.CreateAPIView):
     queryset = Child.objects.all()
-    serializer_class = ChildSerializer
-
+    serializer_class = ChildSerializerPOST
+    
 class RewardList(generics.ListCreateAPIView):
     queryset = Reward.objects.all()
     serializer_class = RewardSerializer
     
-class RewardDetail(generics.RetrieveUpdateDestroyAPIView):
+class RewardListPOST(generics.CreateAPIView):
+    queryset = Reward.objects.all()
+    serializer_class = RewardSerializerPOST
+    
+class RewardDetail(generics.RetrieveDestroyAPIView):
     queryset = Reward.objects.all()
     serializer_class = RewardSerializer
+    
+class RewardDetailPOST(generics.UpdateAPIView):
+    queryset = Reward.objects.all()
+    serializer_class = RewardSerializerPOST

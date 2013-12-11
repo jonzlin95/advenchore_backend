@@ -3,7 +3,7 @@ from django.db import models
 
 class Family(models.Model):
     name = models.CharField(max_length=70)
-
+    
 class Task(models.Model):
     name = models.CharField(max_length=150)
     child = models.ForeignKey('Child')
