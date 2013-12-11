@@ -32,7 +32,9 @@ urlpatterns = patterns('',
  
     #OtherThings
     url(r'^get/task/child/(?P<pk>[0-9]+)/$', views.TasksOfChild.as_view()),    
- 
+    url(r'^get/task/parent/(?P<pk>[0-9]+)/$', views.TasksOfChild.as_view()),    
+    url(r'^get/reward/child/(?P<pk>[0-9]+)/$', views.RewardsOfChild.as_view()),    
+    url(r'^get/reward/parent/(?P<pk>[0-9]+)/$', views.RewardsOfParent.as_view()),    
 )
 
 
