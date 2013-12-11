@@ -66,3 +66,14 @@ class RewardDetail(generics.RetrieveDestroyAPIView):
 class RewardDetailPOST(generics.UpdateAPIView):
     queryset = Reward.objects.all()
     serializer_class = RewardSerializerPOST
+    
+# Custom views
+
+class TasksOfChild(APIView):
+    """
+    List all tasks owned by Child
+    """
+    def get(self, request, pk, format=None):
+        snippets = Task.objects.all(child=pk)
+        serializer = TaskSerializer(Task, many=True)
+        return Response(serializer.data)
