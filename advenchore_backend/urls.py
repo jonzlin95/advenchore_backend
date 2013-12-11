@@ -29,5 +29,10 @@ urlpatterns = patterns('',
     url(r'^post/child/(?P<pk>[0-9]+)/$', views.ChildDetailPOST.as_view()),
     url(r'^post/reward/$', views.RewardListPOST.as_view()),
     url(r'^post/reward/(?P<pk>[0-9]+)/$', views.RewardDetailPOST.as_view()),    
-    
+ 
+    #OtherThings
+    url(r'^get/task/child/(?P<pk>[0-9]+)/$', views.TasksOfChild.as_view()),    
+ 
 )
+
+
