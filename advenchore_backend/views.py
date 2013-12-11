@@ -15,3 +15,15 @@ class FamilyDetail(generics.RetrieveUpdateDestroyAPIView):
 class TaskList(generics.ListCreateAPIView):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+    
+class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = FamilySerializer
+    
+class ChildDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Child.objects.all()
+    serializer_class = FamilySerializer
+
+class ChildList(generics.ListCreateAPIView):
+    queryset = Child.objects.all()
+    serializer_class = FamilySerializer
