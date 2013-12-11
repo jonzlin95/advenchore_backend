@@ -77,7 +77,7 @@ class TasksOfChild(APIView):
     """
     def get(self, request, pk, format=None):
         try:
-            task = Task.objects.get(child__exact=pk)
+            task = Task.objects.get(child__exact=pk, status__lte = 2)
             serializer = TaskSerializer(task, many=True)
             return Response(serializer.data)
         except Task.DoesNotExist:
@@ -90,7 +90,7 @@ class TasksOfParent(APIView):
         try:
             children = Child.objects.get(parent__exact=pk)
             for child in children:
-                task = Task.objets.get(child__exact = child__id)
+                task = Task.objets.get(child__exact = child__id, status__lte = 2)
                 serializer = TaskSerializer(task, many=True)
             return Response(serializer.data)
         except Task.DoesNotExist:
