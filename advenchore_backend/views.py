@@ -112,10 +112,10 @@ class RewardsOfChild(APIView):
 
 class RewardsOfParent(APIView):            
     
-    # List all tasks owned by a Parent
+    # List all tasks owned by a family
     def get(self,request,pk, format=None):
         try:
-            children = Child.objects.get(parent__exact=pk)
+            children = Child.objects.get(family__exact=pk)
             for child in children:
                 reward = Reward.objets.get(child__exact = child__id)
                 serializer = RewardSerializer(task, many=True)
