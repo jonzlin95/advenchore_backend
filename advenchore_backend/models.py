@@ -7,14 +7,14 @@ class Family(models.Model):
 class Task(models.Model):
     name = models.CharField(max_length=150)
     child = models.ForeignKey('Child')
-    startDate = models.DateTimeField(default=datetime.now())
-    dueDate = models.DateTimeField(default=datetime.now())
+    startDate = models.DateTimeField(default=datetime.now(), blank=True)
+    dueDate = models.DateTimeField(default=datetime.now(), blank=True)
     pointValue = models.IntegerField()
     # 0 incomplete
     # 1 pending parent approval
     # 2 parent sent back incomplete
     # 3 completed task
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(default=0, blank=True)
     description = models.TextField(blank=True)
     response = models.TextField(blank=True)
     picture = models.BooleanField(default=False)
