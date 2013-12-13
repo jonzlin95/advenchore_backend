@@ -107,7 +107,7 @@ class RewardsOfChild(APIView):
             reward = Reward.objects.get(child__exact=pk)
             serializer = RewardSerializer(reward, many=True)
             return Response(serializer.data)
-        except Task.DoesNotExist:
+        except Reward.DoesNotExist:
             return Response()
 
 class RewardsOfParent(APIView):            
@@ -120,7 +120,7 @@ class RewardsOfParent(APIView):
                 reward = Reward.objets.get(child__exact = child__id)
                 serializer = RewardSerializer(task, many=True)
             return Response(serializer.data)
-        except Task.DoesNotExist:
+        except Reward.DoesNotExist:
             return Response()
         except Child.DoesNotExist:
             return Response()
