@@ -19,7 +19,7 @@ class FamilyDetail(generics.RetrieveDestroyAPIView):
 
 class FamilyDetailPOST(generics.UpdateAPIView):
     queryset = Family.objects.all()
-    serialzer_class = FamilySerializerPOST
+    serializer_class = FamilySerializerPOST
     
 class TaskList(generics.ListAPIView):
     queryset = Task.objects.all()
