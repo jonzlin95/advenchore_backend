@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+import datetime
 
 class Family(models.Model):
     name = models.CharField(max_length=70)
@@ -7,8 +7,8 @@ class Family(models.Model):
 class Task(models.Model):
     name = models.CharField(max_length=150)
     child = models.ForeignKey('Child')
-    startDate = models.DateTimeField(default=datetime.now(), blank=True)
-    dueDate = models.DateTimeField(default=datetime.now(), blank=True)
+    startDate = models.DateTimeField(default=datetime.datetime.now(), blank=True)
+    dueDate = models.DateTimeField(default=datetime.datetime.now(), blank=True)
     pointValue = models.IntegerField()
     # 0 incomplete
     # 1 pending parent approval
