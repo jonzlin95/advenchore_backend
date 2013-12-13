@@ -118,7 +118,7 @@ class RewardsOfParent(APIView):
             children = Child.objects.filter(family__exact=pk)
             for child in children:
                 reward = Reward.objects.filter(child__exact = child.id)
-                serializer = RewardSerializer(task, many=True)
+                serializer = RewardSerializer(reward, many=True)
             return Response(serializer.data)
         except Reward.DoesNotExist:
             return Response()
