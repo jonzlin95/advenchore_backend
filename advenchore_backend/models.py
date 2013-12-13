@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+import datetime.datetime
 
 class Family(models.Model):
     name = models.CharField(max_length=70)
