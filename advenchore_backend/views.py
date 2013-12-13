@@ -77,8 +77,8 @@ class TasksOfChild(APIView):
     """
     def get(self, request, pk, format=None):
         try:
-            task = Task.objects.get(child__exact=pk, status__lte = 2)
-            serializer = TaskSerializer(task, many=True)
+            tasks = Task.objects.filter(child__exact=pk, status__lte = 2)
+            serializer = TaskSerializer(tasks, many=True)
             return Response(serializer.data)
         except Task.DoesNotExist:
             return Response()
@@ -88,7 +88,7 @@ class TasksOfParent(APIView):
     # List all tasks owned by a Parent
     def get(self,request,pk, format=None):
         try:
-            children = Child.objects.get(parent__exact=pk)
+            children = Child.objects.filter(parent__exact=pk)
             for child in children:
                 task = Task.objets.get(child__exact = child__id, status__lte = 2)
                 serializer = TaskSerializer(task, many=True)
@@ -104,7 +104,7 @@ class RewardsOfChild(APIView):
     """
     def get(self, request, pk, format=None):
         try:
-            reward = Reward.objects.get(child__exact=pk)
+            reward = Reward.objects.filter(child__exact=pk)
             serializer = RewardSerializer(reward, many=True)
             return Response(serializer.data)
         except Reward.DoesNotExist:
@@ -115,7 +115,7 @@ class RewardsOfParent(APIView):
     # List all tasks owned by a family
     def get(self,request,pk, format=None):
         try:
-            children = Child.objects.get(family__exact=pk)
+            children = Child.objects.filter(family__exact=pk)
             for child in children:
                 reward = Reward.objets.get(child__exact = child__id)
                 serializer = RewardSerializer(task, many=True)
